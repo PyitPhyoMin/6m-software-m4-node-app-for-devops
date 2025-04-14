@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.1
+
 jobs:
   build:
     docker:
@@ -25,10 +26,10 @@ jobs:
           echo "Running tests..."
           npm run test
 
-  workflows:
-    simple_workflow:
-      jobs:
-        - build
-        - test:
-            requires:
-              - build
+workflows:
+  simple_workflow:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build

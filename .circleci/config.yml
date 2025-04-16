@@ -90,12 +90,11 @@ jobs:
       - docker/build:
           image: $DOCKERHUB_USERNAME/education-space
       - run: |
-          name: Docker Login
-          command: |
-            echo "Logging in to Docker Hub..."
-            echo "$DOCKERHUB_PASSWORD" | docker login -u $DOCKERHUB_USERNAME --password-stdin
-      - docker/push:
-          image: $DOCKERHUB_USERNAME/education-space
+          echo "Logging in to Docker Hub..."
+          echo "$DOCKERHUB_PASSWORD" | docker login -u $DOCKERHUB_USERNAME --password-stdin
+          docker push $DOCKERHUB_USERNAME/education-space
+      #- docker/push:
+      #   image: $DOCKERHUB_USERNAME/education-space
   deploy:
     docker:
       - image: cimg/node:16.10

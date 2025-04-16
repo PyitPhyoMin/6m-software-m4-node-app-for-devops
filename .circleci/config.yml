@@ -93,17 +93,17 @@ jobs:
   #         echo "Logging in to Docker Hub..."
   #         echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
   #         docker push $DOCKERHUB_USERNAME/education-space
-      #- docker/push:
-      #   image: $DOCKERHUB_USERNAME/education-space
+  #- docker/push:
+  #   image: $DOCKERHUB_USERNAME/education-space
 
-publish:
+  publish:
     executor: docker/docker
     steps:
       - setup_remote_docker
       - checkout
       - docker/check:
-          docker-username: DOCKERHUB_LOGIN  # DOCKER_LOGIN is the default value, if it exists, it automatically would be used.
-          docker-password: DOCKERHUB_PASSWORD  # DOCKER_PASSWORD is the default value
+          docker-username: DOCKERHUB_LOGIN # DOCKER_LOGIN is the default value, if it exists, it automatically would be used.
+          docker-password: DOCKERHUB_PASSWORD # DOCKER_PASSWORD is the default value
       - docker/build:
           image: $DOCKERHUB_USERNAME/education-space
       - docker/push:

@@ -3,9 +3,9 @@ name: "Test github action"
 on:
   workflow_dispatch: # Manual trigger via GitHub UI
   push: # Automatically triggered on push to main branch
-    branches: [main]
+    branches: [release/v1.0.0] # Only triggers on this branch
   pull_request: # Automatically triggered on PR to main branch
-    branches: [main]
+    branches: [release/v1.0.0] # Only triggers on this branch
 
 jobs:
   build:

@@ -10,17 +10,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest # Uses GitHub-hosted Ubuntu runner
-  steps:
-    - uses: actions/checkout@v3 # Checks out repository code
-    - name: Set up Node.js
-      uses: actions/setup-node@v3 # Sets up Node.js environment
-      with:
-        node-version: "22.x"
-        cache: "npm" # Caches npm dependencies
-    - name: Install dependencies
-      run: npm ci # Installs dependencies via npm
-    - name: Simulate build
-      run: echo "Simulate build" # Placeholder for actual build command
+    steps:
+      - uses: actions/checkout@v3 # Checks out repository code
+      - name: Set up Node.js
+        uses: actions/setup-node@v3 # Sets up Node.js environment
+        with:
+          node-version: "22.x"
+          cache: "npm" # Caches npm dependencies
+      - name: Install dependencies
+        run: npm ci # Installs dependencies via npm
+      - name: Simulate build
+        run: echo "Simulate build" # Placeholder for actual build command
 
 # test:
 #   needs: build # This job runs after the build job completes

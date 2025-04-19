@@ -57,5 +57,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: huai99/education-space:latest # Tags the Docker image
+          tags: pyitphyomin/education-space:latest # Tags the Docker image
 

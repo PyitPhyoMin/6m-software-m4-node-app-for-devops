@@ -28,12 +28,14 @@ jobs:
   scan:
     docker:
       - image: cimg/node:16.10
-        environment:
-          IMAGE_NAME: $DOCKER_USERNAME/education-space
+    environment:
+      IMAGE_NAME: $DOCKER_USERNAME/education-space
     steps:
       - checkout
       - setup_remote_docker
-      - docker/check
+      - docker/check:
+          docker-username: DOCKERHUB_LOGIN
+          docker-password: DOCKERHUB_PASSWORD
       - run: docker build -t $IMAGE_NAME .
       - snyk/scan:
           docker-image-name: $IMAGE_NAME
@@ -44,9 +46,11 @@ jobs:
       IMAGE_NAME: $DOCKER_USERNAME/education-space
     steps:
       - checkout
-      - setup_remote_docker
-      - docker/check
-      - run: docker build -t $IMAGE_NAME .
+      # - setup_remote_docker
+      # - docker/check
+      # - run: docker build -t $IMAGE_NAME .
+      - node/install-packages:
+          pkg-manager: npm
       - snyk/install
       - run: |
           snyk code test

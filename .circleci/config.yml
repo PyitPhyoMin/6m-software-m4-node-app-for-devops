@@ -44,7 +44,7 @@ jobs:
           # The "fail-on-issues: false" option makes the scan report issues but always exit with code 0
           # This allows the pipeline to continue even if vulnerabilities are found
           fail-on-issues: true
-          severity-threshold: high critical
+          severity-threshold: "high critical"
   codescan:
     docker:
       - image: cimg/node:16.10

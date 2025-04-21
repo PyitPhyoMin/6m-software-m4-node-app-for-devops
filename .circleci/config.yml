@@ -36,7 +36,9 @@ jobs:
       - docker/check:
           docker-username: DOCKERHUB_LOGIN
           docker-password: DOCKERHUB_PASSWORD
-      - run: docker build -t $IMAGE_NAME .
+      # - run: docker build -t $IMAGE_NAME .
+      - docker/build:
+          image: $DOCKER_USERNAME/education-space
       - snyk/scan:
           docker-image-name: $IMAGE_NAME
   codescan:

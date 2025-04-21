@@ -59,7 +59,7 @@ jobs:
           pkg-manager: npm
       - snyk/install
       - run: |
-          snyk code test
+          snyk code test --fail-on=upgradable
   publish:
     executor: docker/docker
     steps:

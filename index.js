@@ -2,6 +2,9 @@ require("dotenv").config();
 const express = require('express')
 const app = express()
 
+// Disable X-Powered-By header
+app.disable('x-powered-by')
+
 app.use(express.json())
 
 //const print = require("./controller");

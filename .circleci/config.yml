@@ -29,16 +29,16 @@ jobs:
     docker:
       - image: cimg/node:16.10
     environment:
-      IMAGE_NAME: $DOCKER_USERNAME/education-space
+      IMAGE_NAME: $DOCKERHUB_LOGIN/education-space
     steps:
       - checkout
       - setup_remote_docker
       - docker/check:
           docker-username: DOCKERHUB_LOGIN
           docker-password: DOCKERHUB_PASSWORD
-      # - run: docker build -t $IMAGE_NAME .
-      - docker/build:
-          image: $DOCKER_USERNAME/education-space
+      - run: docker build -t $IMAGE_NAME .
+      # - docker/build:
+      #     image: $DOCKER_USERNAME/education-space
       - snyk/scan:
           docker-image-name: $IMAGE_NAME
   codescan:
